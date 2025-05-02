@@ -17,6 +17,10 @@ export const caseEntries = [
 		label: "types",
 		values: ["project", "service"],
 	},
+	{
+		label: "newLabel",
+		values: ["value1", "value2"],
+	},
 ] as const;
 
 export interface CaseData {

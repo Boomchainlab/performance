@@ -28,6 +28,7 @@ export interface CaseData {
 	layout: "even" | "references" | "wide";
 	singleRun: boolean;
 	types: "project" | "service";
+	newLabel: "value1" | "value2";
 }
 
 export type CaseEntry = (typeof caseEntries)[number];

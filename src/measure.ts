@@ -35,21 +35,35 @@ async function runProjectLint(data: CaseData) {
 const results: unknown[] = [];
 
 for (const files of caseEntries[0].values) {
-	results.push({
-		files,
-		"project (even layout)": await runProjectLint({
-			files,
-			layout: "even",
-			singleRun: false,
-			types: "project",
-		}),
-		"service (even layout)": await runProjectLint({
-			files,
-			layout: "even",
-			singleRun: false,
-			types: "service",
-		}),
-	});
+	for (const layout of caseEntries[1].values) {
+		for (const singleRun of caseEntries[2].values) {
+			for (const types of caseEntries[3].values) {
+				for (const newLabel of caseEntries[4].values) {
+					results.push({
+						files,
+						layout,
+						singleRun,
+						types,
+						newLabel,
+						"project (even layout)": await runProjectLint({
+							files,
+							layout,
+							singleRun,
+							types,
+							newLabel,
+						}),
+						"service (even layout)": await runProjectLint({
+							files,
+							layout,
+							singleRun,
+							types,
+							newLabel,
+						}),
+					});
+				}
+			}
+		}
+	}
 }
 
 console.table(table(results));

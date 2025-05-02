@@ -37,6 +37,7 @@ The `caseEntries` values in `src/data.ts` can be modified to test:
   - `"wide"`: one root-level `index.ts` importing from all files in the project
 - `singleRun`: whether to enable [single-run inference](https://v8--typescript-eslint.netlify.app/packages/parser#disallowautomaticsingleruninference) as a performance boost
 - `types`: whether to use `parserOptions.project` or `parserOptions.projectService` for typed linting
+- `newLabel`: possible values are `"value1"` and `"value2"`
 
 ## Results
 

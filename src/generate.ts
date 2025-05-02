@@ -14,6 +14,7 @@ async function createCase(data: NamedCaseData): Promise<NamedCaseData> {
 		layout: data.layout,
 		singleRun: data.singleRun,
 		types: data.types,
+		newLabel: data.newLabel,
 	});
 	const directory = path.join(casesPath, name);
 
@@ -43,9 +44,11 @@ for (const files of caseEntries[0].values) {
 	for (const layout of caseEntries[1].values) {
 		for (const singleRun of caseEntries[2].values) {
 			for (const types of caseEntries[3].values) {
-				const data: CaseData = { files, layout, singleRun, types };
-				const name = createProjectName(data);
-				cases.push(await createCase({ ...data, name }));
+				for (const newLabel of caseEntries[4].values) {
+					const data: CaseData = { files, layout, singleRun, types, newLabel };
+					const name = createProjectName(data);
+					cases.push(await createCase({ ...data, name }));
+				}
 			}
 		}
 	}
